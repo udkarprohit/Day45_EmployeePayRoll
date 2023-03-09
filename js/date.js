@@ -5,9 +5,9 @@ newDate.setDate(dt.getDate() + 30);
 console.log(newDate);
 let date = new Date("2023-03-20");
 console.log(date);
-if( date >= dt || date <= newDate){
+if (date >= dt || date <= newDate) {
     console.log("Ok");
 }
-else{
+else {
     console.log("Erroe")
 }

@@ -1,59 +1,59 @@
-window.addEventListener('DOMContentLoaded', (event) =>{
+window.addEventListener('DOMContentLoaded', (event) => {
     const name = document.querySelector("#name");
     const textError = document.querySelector(".text-error");
-    name.addEventListener('input',function(){
-        if( name.value.length == 0){
+    name.addEventListener('input', function () {
+        if (name.value.length == 0) {
             textError.textContent = "";
             return;
         }
-        try{
+        try {
             (new EmployeePayRollData()).name = name.value;
             textError.textContent = "";
-        }catch(e){
+        } catch (e) {
             textError.textContent = e;
 
         }
-});
-const salary = document.querySelector("#salary");
-const output = document.querySelector(".salary-output");
-output.textContent = salary.value;
-salary.addEventListener('input', function(){
+    });
+    const salary = document.querySelector("#salary");
+    const output = document.querySelector(".salary-output");
     output.textContent = salary.value;
-});
+    salary.addEventListener('input', function () {
+        output.textContent = salary.value;
+    });
 });
 
 
-const save = () =>{
-    
-    try{
+const save = () => {
+
+    try {
         let employeePayRollData = createEmployeePayroll();
         createAndUpdateStorage(employeePayRollData);
-    }catch(e){
+    } catch (e) {
         return;
     }
-    
-  }
 
-function createAndUpdateStorage(employeePayrollData){
+}
+
+function createAndUpdateStorage(employeePayrollData) {
     let employeePayrollList = JSON.parse(localStorage.getItem("employeePayrollList"));
 
-    if(employeePayrollList != undefined){
+    if (employeePayrollList != undefined) {
         employeePayrollList.push(employeePayrollData);
     }
-    else{
+    else {
         employeePayrollList = [employeePayrollData];
     }
     // alert(employeePayrollList.toString());
     localStorage.setItem("employeePayrollList", JSON.stringify(employeePayrollList));
-    location.href="html/employee_record.html";
+    location.href = "html/employee_record.html";
 
 }
 
 const getSelectedValues = (propertyValue) => {
     let allItems = document.querySelectorAll(propertyValue);
     let setItems = [];
-    allItems.forEach( item =>{
-        if(item.checked){
+    allItems.forEach(item => {
+        if (item.checked) {
             setItems.push(item.value);
         }
     });
@@ -70,9 +70,9 @@ const getInputElementValue = (id) => {
 
 const createEmployeePayroll = () => {
     let employeePayRollData = new EmployeePayRollData();
-    try{
+    try {
         employeePayRollData.name = getInputValueById('#name');
-    }catch(e){
+    } catch (e) {
         setTextValue('.text-error', e);
         throw e;
     }
@@ -81,7 +81,7 @@ const createEmployeePayroll = () => {
     employeePayRollData.department = getSelectedValues('[name=department]');
     employeePayRollData.salary = getInputValueById('#salary');
     employeePayRollData.note = getInputValueById('#notes');
-    let date = getInputValueById("#day") + " " + getInputValueById("#month")+" "+getInputValueById("#year");
+    let date = getInputValueById("#day") + " " + getInputValueById("#month") + " " + getInputValueById("#year");
     var a = new Date(date);
     employeePayRollData.startDate = a;
     // alert(employeePayRollData.toString());
@@ -89,35 +89,35 @@ const createEmployeePayroll = () => {
 }
 
 
-const unSelectedValues = (propertyValue) =>{
+const unSelectedValues = (propertyValue) => {
     let allItems = document.querySelectorAll(propertyValue);
     allItems.forEach(item => {
         item.checked = false;
     });
 }
-const setValue = (id, value) =>{
+const setValue = (id, value) => {
     const element = document.querySelectorAll(id);
     element.value = value;
 }
 
-const setTextValue = (id, value) =>{
+const setTextValue = (id, value) => {
     const element = document.querySelector(id);
     element.textContent = value;
 }
 
-const resetForm = () =>{
-    setValue("#name","");
+const resetForm = () => {
+    setValue("#name", "");
     unSelectedValues('[name=profile]');
     unSelectedValues('[name=gender]');
     unSelectedValues('[name=department]');
     setTextValue('.text-error', '');
     setTextValue('.startDate-error', '');
     setTextValue('.salary-output', '5000000');
-    setValue('#salary','500000');
-    setValue('#notes','');
-    setValue('#day','1');
-    setValue('#month','Jan');
-    setValue('#year','2020');
+    setValue('#salary', '500000');
+    setValue('#notes', '');
+    setValue('#day', '1');
+    setValue('#month', 'Jan');
+    setValue('#year', '2020');
 }
 
 
