@@ -1,6 +1,4 @@
-
-
-    var day = document.querySelector("#day");
+ var day = document.querySelector("#day");
     var month = document.querySelector("#month");
     let year = document.querySelector("#year");
     day.addEventListener('input', checkDate);
