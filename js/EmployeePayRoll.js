@@ -1,9 +1,7 @@
 class EmployeePayRollData{
     get id() {return this._id;}
     set id(id){this._id = id;}
-    
     get name(){return this._name;}
-
     set name(name){
         let nameRegex = RegExp("^[A-Z]{1}[a-zA-z\\s]{2,}$");
         if(nameRegex.test(name)){
@@ -23,7 +21,6 @@ class EmployeePayRollData{
     set department(department){
         this._department = department;
     }
-
     get salary(){return this._salary;}
     set salary(salary){
         this._salary = salary;}
