@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\css\new_home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Employee Payroll App</title>
+</head>
+<body>
+    <header class="header-content header">
+        <div class="logo-content">
+            <img  src="..\assets\logo.png" alt="">
+            <div>
+            <span class="emp-text"> EMPLOYEE</span><br>
+            <span class="emp-text emp-payroll">PAYROLL</span>
+            </div>
+        </div>
+        </header>
+        <div class="main-content">
+            <div class="header-content">
+                <div class="emp-detail-text">Employee Details
+                <div class="emp-count">10</div></div>
+            <a href="..\payroll_index.html" target="_blank" class="add-button"><img src="../assets/add-24px.svg" alt="">Add User</a>
+        </div>
+    <div class="table-main">
+    <table id="table-display" class="table">
+       
+    </table>
+</div>
+    <script src="..\js\new_home.js"></script>
+    <script src="..\js\utility.js"></script>
+    <script src="..\js\EmployeePayRoll.js"></script>
+    <script src="..\js\new_employee_payroll.js"></script>
+    <script src="..\js\payroll_index.js"></script>
+    <script src="..\js\site_properties.js"></script>
+    <script>window.addEventListener('DOMContentLoaded',(event) => {
+        createInnerHtml();
+    });
+    
+    
+    const createInnerHtml = () => {
+    
+        const headerHtml ="<th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Profile</th><th>Actions</th>";
+        const innerHtml =`${headerHtml}<tr>
+        <td><img class="profile" alt="" src="..\assets\1.png"></td>
+        <td>Narayana Mahadevan</td>
+        <td>Female</td>
+        <td><div class="dept-label">HR</div><div class="dept-label">Finance</div></td>
+        <td>300000</td>
+        <td>1 Nov 2020</td>
+        <td><img id="1" onclick="remove(this)" alt="delete" src="..\assets\delete-black-18dp.svg"><img id="1"  onclick="updaye(this)" alt="edit" src="D:\JavaScript\HTML-EmployeePayRoll\Employee_PayRoll\assets\create-black-18dp.svg"></td>
+        </tr>`;
+    document.querySelector('#table-display').innerHTML = innerHtml;
+    }</script>
+</body>
+
+</html>
